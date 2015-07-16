@@ -1,0 +1,26 @@
+{
+  "name": "chat-apllication-example",
+  "version": "0.0.1",
+  "description": "a chat project simple with nodejs",
+  "keywords": [
+    "nodejs",
+    "chat"
+  ],
+  "authors": [
+    "bangnguyenluong"
+  ],
+  "license": "MIT",
+  "homepage": "/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "socket.io-client": "~1.3.5",
+    "bootstrap": "~3.3.5"
+  }
+}

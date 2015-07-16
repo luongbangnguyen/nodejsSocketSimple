@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    
+    form#fMessages(method="post")
+        input#txtMessage(type="text",style="width:500px")
+    script(type="text/javascript").
+        
+        $(document).ready(function(){
+           
+            var socket = io.connect('http://localhost:3000');
+             socket.emit('join',makeid());
+            
+            $('#fMessages').submit(function(e){
+                e.preventDefault();
+                sendData($('#txtMessage').val());
+                $('#txtMessage').val('');
+            });
+            
+            socket.on('messages',function(data){
+                console.log(data);
+            });
+            
+            function sendData(data){
+                socket.emit('messages',data);
+            };
+        });
+        
+        function makeid()
+        {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 5; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
